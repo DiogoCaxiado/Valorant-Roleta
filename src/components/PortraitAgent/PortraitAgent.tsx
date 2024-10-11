@@ -1,6 +1,11 @@
 import "./PortraitAgent.scss";
 
-export default function BackgroundAgent({ getAgentData, getAgentClass }) {
+interface BackgroundAgent {
+  getAgentData: any
+  getAgentClass: any
+}
+
+export default function BackgroundAgent({ getAgentData, getAgentClass }: BackgroundAgent) {
   return (
     <section className="class-agent">
       <div className="class-border">

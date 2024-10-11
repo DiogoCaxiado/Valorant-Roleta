@@ -1,7 +1,12 @@
 import "./Message.scss";
+
 import Image from "../../assets/image/Valorant-Icon.png";
 
-export default function Message({ randomAgent }) {
+interface MessageProps {
+  randomAgent: any
+}
+
+export default function Message({ randomAgent }: MessageProps) {
   return (
     <section className={randomAgent ? "page-layout-agent" : "page-layout"}>
       <div className="page-section">

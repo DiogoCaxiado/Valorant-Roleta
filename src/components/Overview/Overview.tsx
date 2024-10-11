@@ -1,5 +1,14 @@
 import "./Overview.scss";
 import CardAbilities from "../CardAbilities/CardAbilities";
+import { Dispatch, SetStateAction } from "react";
+
+interface OverviewProps {
+  getAgentData: any
+  getAgentClass: any
+  abilities: any
+  descriptionAbility: any
+  setDescriptionAbility: Dispatch<SetStateAction<any>>
+}
 
 export default function Overview({
   getAgentData,
@@ -7,7 +16,7 @@ export default function Overview({
   abilities,
   descriptionAbility,
   setDescriptionAbility,
-}) {
+}: OverviewProps) {
   function handleClickDescriptionAbilitie(prop) {
     const result = abilities.find((abilitie) => abilitie.slot === prop);
     setDescriptionAbility(result);

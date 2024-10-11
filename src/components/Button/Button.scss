@@ -8,18 +8,34 @@
     z-index: 2;
   }
 
+  &-border {
+    padding: 2px 1px; 
+
+    border-width: 1;
+    border-style: solid;
+    border-color: #825e7d;
+    border-radius: 2px;
+
+    &:hover {
+      transition: all 400ms ease-in;
+
+      border-width: 2;
+      border-color: #ff4654
+    }
+  }
+
   &-button {
-    padding: 10px 50px;
+    padding: 10px 80px;
     cursor: pointer;
 
     border: none;
 
-    font-family: Prompt;
-    font-size: 20px;
+    font-family: Tungsten-Font, sans-serif;
+    font-size: 2rem;
     text-transform: uppercase;
 
     color: white;
-    background-color: #55996e;
+    background-color: #ff4654;
 
     &:hover {
       opacity: 0.8;

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "lib": ["es2015", "dom"] 
+  },
+  "include": ["src", "global.d.ts"]
+}
+  

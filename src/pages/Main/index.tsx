@@ -1,13 +1,14 @@
 import { useState } from "react";
-import useCallAgents from "./../../hooks/useCallAgents";
-import Background from "./../../components/Background/Background";
-import Message from "./../../components/Message/Message";
-import CardAgents from "./../../components/CardAgents/CardAgents";
-import Button from "./../../components/Button/Button";
-import BackgroundAgent from "./../../components/PortraitAgent/PortraitAgent";
-import Overview from "./../../components/Overview/Overview";
+import useCallAgents from "../../hooks/useCallAgents";
+import Background from "../../components/Background/Background";
+import Message from "../../components/Message/Message";
+import CardAgents from "../../components/CardAgents/CardAgents";
+import Button from "../../components/Button/Button";
+import BackgroundAgent from "../../components/PortraitAgent/PortraitAgent";
+import Overview from "../../components/Overview/Overview";
 
 import "./index.scss";
+import { AgentsType } from "../../types";
 
 function App() {
   const [randomAgent, setRandomAgent] = useState("");
@@ -26,18 +27,19 @@ function App() {
     setRandomAgent("");
   }
 
-  function getAgentData(property) {
-    const result = agents.find((agent) => agent.uuid === randomAgent);
+  function getAgentData(property: string) {
+    const result = agents?.find((agent: AgentsType) => console.log(agent));
     return result[property];
   }
 
-  function getAgentClass(property) {
-    const result = agents.find((agent) => agent.uuid === randomAgent);
+  function getAgentClass(property: string) {
+    const result = agents?.find((agent: AgentsType) => agent.uuid === randomAgent);
     return result.role[property];
   }
 
-  function getAgentAbilities(randomA) {
-    const result = agents.find((agent) => agent.uuid === randomA);
+  function getAgentAbilities(randomA: string) {
+
+    const result = agents?.find((agent: AgentsType) => agent.uuid === randomA);
     setAbilities(result.abilities);
   }
 
@@ -64,7 +66,6 @@ function App() {
 
         <Message
           randomAgent={randomAgent}
-          getAgentAbilities={getAgentAbilities}
         />
 
         <Button handleClickButton={handleClickButton} />

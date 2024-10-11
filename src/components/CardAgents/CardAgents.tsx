@@ -1,6 +1,12 @@
 import "./CardAgents.scss";
 
-export default function CardAgents({ agents, randomAgent, handleClickAgent }) {
+interface CardAgentsProps {
+  agents: any
+  randomAgent: any
+  handleClickAgent: () => void
+}
+
+export default function CardAgents({ agents, randomAgent, handleClickAgent }: CardAgentsProps) {
   return (
     <section className="card">
       <div className="card-layout">

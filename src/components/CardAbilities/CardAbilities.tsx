@@ -1,6 +1,13 @@
 import "./CardAbilities.scss";
 
-export default function CardAbilities({ name, src, alt, handle }) {
+interface CardAbilitiesProps {
+  name: string;
+  src: string;
+  alt: string; 
+  handle: (arg: string) => void;
+}
+
+export default function CardAbilities({ name, src, alt, handle }: CardAbilitiesProps) {
   return (
     <section className="abilities-box" key={name}>
       <div className="abilities-name" onClick={() => handle(name)}>
