@@ -1,18 +1,14 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export default function useCallAgents() {
-  const [agents, setAgents] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["datakey"],
+    queryFn: async () => {
+      const response = await fetch(process.env.VITE_API_URL);
+      const result = await response.json();
+      return result.data;
+    },
+  });
 
-  useEffect(() => {
-    fetch(
-      "https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=pt-BR"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setAgents(data.data);
-        setIsLoading(false);
-      });
-  }, []);
-  return { agents, isLoading };
+  return { agents: data || [], isLoading, error };
 }

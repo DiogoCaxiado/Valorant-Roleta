@@ -7,10 +7,10 @@ import Button from "../../components/Button/Button";
 import BackgroundAgent from "../../components/PortraitAgent/PortraitAgent";
 import Overview from "../../components/Overview/Overview";
 
-import "./index.scss";
 import { AgentsType } from "../../types";
+import "./index.scss";
 
-function App() {
+const App = () => {
   const [randomAgent, setRandomAgent] = useState("");
   const [abilities, setAbilities] = useState([]);
   const [descriptionAbility, setDescriptionAbility] = useState("");
@@ -33,12 +33,13 @@ function App() {
   }
 
   function getAgentClass(property: string) {
-    const result = agents?.find((agent: AgentsType) => agent.uuid === randomAgent);
+    const result = agents?.find(
+      (agent: AgentsType) => agent.uuid === randomAgent
+    );
     return result.role[property];
   }
 
   function getAgentAbilities(randomA: string) {
-
     const result = agents?.find((agent: AgentsType) => agent.uuid === randomA);
     setAbilities(result.abilities);
   }
@@ -64,9 +65,7 @@ function App() {
           />
         )}
 
-        <Message
-          randomAgent={randomAgent}
-        />
+        <Message randomAgent={randomAgent} />
 
         <Button handleClickButton={handleClickButton} />
 
@@ -80,6 +79,6 @@ function App() {
       </main>
     </>
   );
-}
+};
 
 export default App;
