@@ -49,7 +49,9 @@ const App = () => {
       <main className="content">
         <Background />
 
-        {randomAgent && (
+        {!randomAgent && <Message />}
+
+        {/* {randomAgent && (
           <BackgroundAgent
             getAgentData={getAgentData}
             getAgentClass={getAgentClass}
@@ -63,9 +65,7 @@ const App = () => {
             descriptionAbility={descriptionAbility}
             setDescriptionAbility={setDescriptionAbility}
           />
-        )}
-
-        <Message randomAgent={randomAgent} />
+        )} */}
 
         <Button handleClickButton={handleClickButton} />
 
