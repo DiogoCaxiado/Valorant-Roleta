@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useCallAgents from "../../hooks/useCallAgents";
+import useCallApi from "../../hooks/useCallApi";
 import Background from "../../components/Background/Background";
 import Message from "../../components/Message/Message";
 import CardAgents from "../../components/CardAgents/CardAgents";
@@ -8,13 +8,23 @@ import BackgroundAgent from "../../components/PortraitAgent/PortraitAgent";
 import Overview from "../../components/Overview/Overview";
 
 import { AgentsType } from "../../types";
-import "./index.scss";
+import styles from "./style.module.scss";
 
 const App = () => {
   const [randomAgent, setRandomAgent] = useState("");
   const [abilities, setAbilities] = useState([]);
   const [descriptionAbility, setDescriptionAbility] = useState("");
-  const { agents, isLoading } = useCallAgents();
+  const {
+    data: agents,
+    isLoading,
+    error,
+  } = useCallApi<AgentsType[]>({
+    endpoint: "agents",
+    filters: {
+      isPlayableCharacter: true,
+      language: "pt-BR",
+    },
+  });
 
   function handleClickButton() {
     const random = Math.floor(Math.random() * (agents.length - 1));
@@ -28,7 +38,9 @@ const App = () => {
   }
 
   function getAgentData(property: string) {
-    const result = agents?.find((agent: AgentsType) => console.log(agent));
+    const result = agents?.find(
+      (agent: AgentsType) => agent.uuid === randomAgent
+    );
     return result[property];
   }
 
@@ -44,9 +56,17 @@ const App = () => {
     setAbilities(result.abilities);
   }
 
+  if (isLoading) {
+    return <h1>loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>{error.message}</h1>;
+  }
+
   return (
     <>
-      <main className="content">
+      <main className={styles.content}>
         <Background />
 
         {randomAgent && (
