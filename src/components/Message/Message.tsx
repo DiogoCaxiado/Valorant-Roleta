@@ -2,21 +2,15 @@ import "./Message.scss";
 
 import Image from "../../assets/image/Valorant-Icon.png";
 
-interface MessageProps {
-  randomAgent: any
-}
-
-export default function Message({ randomAgent }: MessageProps) {
+export default function Message() {
   return (
-    <section className={randomAgent ? "page-layout-agent" : "page-layout"}>
+    <section className="page-layout">
       <div className="page-section">
-        {!randomAgent && <img className="page-image" src={Image} />}
-        {!randomAgent && <h1 className="page-title">Valoreta</h1>}
-        {!randomAgent && (
-          <p className="page-description">
-            Está com dúvida no que jogar? Clique no botão
-          </p>
-        )}
+        <img className="page-image" src={Image} />
+        <h1 className="page-title">Valoreta</h1>
+        <p className="page-description">
+          Está com dúvida no que jogar? Clique no botão
+        </p>
       </div>
     </section>
   );
